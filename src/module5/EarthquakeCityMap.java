@@ -38,7 +38,7 @@ public class EarthquakeCityMap extends PApplet {
   private static final long serialVersionUID = 1L;
 
   // IF YOU ARE WORKING OFFILINE, change the value of this variable to true
-  private static final boolean offline = true;
+  private static final boolean offline = false;
 
   /**
    * This is where to find the local tiles, for working without an Internet
@@ -177,9 +177,11 @@ public class EarthquakeCityMap extends PApplet {
   }
 
   private void clickedOnCity(List<Marker> markers) {
+    if (lastClicked != null) {
+      return;
+    }
     for (Marker m : markers) {
       if (m.isInside(map, mouseX, mouseY)) {
-        System.out.println("test");
         lastClicked = (CommonMarker) m;
         for (Marker mhide : markers) {
           if (mhide != lastClicked) {
@@ -196,9 +198,11 @@ public class EarthquakeCityMap extends PApplet {
   }
 
   private void clickedOnQuake(List<Marker> markers) {
+    if (lastClicked != null) {
+      return;
+    }
     for (Marker m : markers) {
       if (((EarthquakeMarker) m).isInside(map, mouseX, mouseY)) {
-        System.out.println("test");
         lastClicked = (EarthquakeMarker) m;
         for (Marker mhide : markers) {
           if (mhide != lastClicked) {

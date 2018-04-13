@@ -19,12 +19,12 @@ public class AirportMarker extends CommonMarker {
 	
 	public AirportMarker(Feature city) {
 		super(((PointFeature)city).getLocation(), city.getProperties());
-	
+    setId(city.getId());
 	}
 	
 	@Override
 	public void drawMarker(PGraphics pg, float x, float y) {
-		pg.fill(11);
+		pg.fill(250, 0, 0);
 		pg.ellipse(x, y, 5, 5);
 		
 		
